@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/footer.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="js/script.js">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <header>
@@ -23,6 +22,19 @@
             </div>
         </nav>
     </header>
+
+    <!--Create a dropdown menu that is revealed to the user when they click on it-->
+    <div class ="dropdown">
+        <!--<button onclick="revealDrop()" class="dropbtn">Dropdown</button>-->
+        <input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()" onfocus="revealDrop()" onblur="revealDrop()">
+        <div id="dropdownMenu" class="dropdown-content">
+            <a class="skinOption" href="#">temp 1</a>
+            <a class="skinOption" href="#">temp 2</a>
+            <a class="skinOption" href="#">temp 3</a>
+            <a class="skinOption" href="#">temp 4</a>
+            <a class="skinOption" href="#">temp 5</a>
+        </div>
+    </div>
 
     <div class="board">
         <div class="row">
