@@ -17,3 +17,37 @@ function filterFunction() {
         }
     }
 }
+
+function updateSearch(name) {
+    search = document.getElementById("myInput");
+    search.value = name;
+}
+
+document.addEventListener("DOMContentLoaded", listenForClicks);
+
+function listenForClicks() {
+    document.addEventListener(
+        "click", 
+        function removeDropDown(event) {
+            const dropdown = document.getElementById("myDropdown");
+            const menu = document.getElementById("dropdownMenu");
+
+            if(!dropdown.contains(event.target)) {
+                console.log(menu.style.display);
+                menu.classList.toggle("show", false);
+            }
+        }
+    )
+
+    document.addEventListener(
+        "click",
+        function submitGuess(event) {
+            const guessButton = document.getElementById("makeGuess");
+
+            if(guessButton.contains(event.target)) {
+                guessInput = document.getElementById("myInput").value;
+                console.log(guessInput);
+            }
+        }
+    )
+}
