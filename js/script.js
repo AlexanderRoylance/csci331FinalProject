@@ -38,16 +38,16 @@ function listenForClicks() {
             }
         }
     )
+}
 
-    document.addEventListener(
-        "click",
-        function submitGuess(event) {
-            const guessButton = document.getElementById("makeGuess");
-
-            if(guessButton.contains(event.target)) {
-                guessInput = document.getElementById("myInput").value;
-                console.log(guessInput);
-            }
-        }
-    )
+function submitGuess(correct) {
+    // Get the current guess that is entered in the search field
+    const guessInput = document.getElementById("myInput").value;
+    // Very simple correct/incorrect guess logic with placeholder events
+    if(correct == guessInput) {
+        console.log("correct answer");
+    }
+    else {
+        console.log("incorrect answer");
+    }
 }

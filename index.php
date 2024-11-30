@@ -45,12 +45,23 @@
                     $query = "SELECT * FROM `skins`;";
 
                     $result = $conn->query($query);
+                    
+                    // Creates a number based on the day/month to grab a correct answer from
+                    // Makes it so all users get the same correct answer
+                    $randomNum = floor((date('d') + date('m'))/100 * 121) - 2;
+
+                    $counter = 0;
 
                     if($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            $current_name = $row['Name'];
+                            // If on the correct index of the correct answer make $correct equal to that skins name
+                            if($randomNum == $counter) {
+                                $correct = $row['Name'] . ' (' . $row['Weapon'] . ')';
+                            }
+                            $current_name = $row['Name'] . ' (' . $row['Weapon'] . ')';
                             $img = $row['ImgID'] . '.webp';
                             echo "<a class='skinOption' href='#' onClick='updateSearch(\"$current_name\");revealDrop()'><img class='guessImages' src='images_skins/$img'> $current_name</a>";
+                            $counter += 1;
                         }
                     }
 
@@ -58,7 +69,10 @@
 
             </div>
         </div>
-        <button id="makeGuess">Guess</button>
+        <!--Makes a button that when pressed calls the submitGuess() function with the correct answer as a parameter-->
+        <?php
+            echo "<button id='makeGuess' onclick='submitGuess(\"$correct\")'>Guess</button>";
+        ?>
     </div>
     <footer>
         <p>Kaden Bach   |   Matthew Parker  |   Alexander Roylance  |   Eric Yeager </p>
