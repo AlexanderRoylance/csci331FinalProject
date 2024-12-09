@@ -9,6 +9,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: auto;
 }
 
 h2 {
@@ -81,33 +82,103 @@ h2 {
     display:block;
 };
 
-/*.hint-square-collection
-{
 
+.output-section {
+    margin-top: 20px;
+    color: white;
+    font-size: 16px;
 }
 
-.hint-square-release
-{
 
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
-.hint-square-rarity
-{
-
+.message.info {
+    background-color: #444;
+    color: #ddd;
 }
 
-.hint-square-weapon
-{
-
+.message.success {
+    background-color: #28a745;
+    color: white;
 }
 
-.hint-square-pattern
-{
-
+.message.error {
+    background-color: #dc3545;
+    color: white;
 }
 
-.hint-square-price
-{
+.message.hint {
+    background-color: #ff8c00;
+    color: white;
+}
 
-}*/
+#date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Center the form elements */
+    justify-content: center;
+    background-color: #444;  /* Background color for the form container */
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;        /* Max width to keep the form compact */
+    box-sizing: border-box;
+}
 
+/* Form styling */
+#date form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Label styling */
+#date label {
+    color: white;  /* Label color */
+    margin-bottom: 8px;  /* Spacing between label and input */
+    font-size: 14px;  /* Label font size */
+}
+
+/* Input field styling */
+#date input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;  /* Ensures padding doesn't affect width */
+}
+
+/* Focus effect for input fields */
+#date input:focus {
+    outline: 2px solid #ff8c00;  /* Highlight border on focus */
+}
+
+/* Button styling */
+#date button {
+    background-color: #ff8c00;  /* Button background color */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+#date button:hover {
+    background-color: #e07b00;
+}
+
+/* Button focus effect */
+#date button:focus {
+    outline: 2px solid #ff8c00;  /* Button focus border */
+}

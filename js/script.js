@@ -18,6 +18,7 @@ function filterFunction() {
     }
 }
 
+
 function updateSearch(name) {
     search = document.getElementById("myInput");
     search.value = name;
@@ -47,101 +48,87 @@ var complete = false; //whether or not the game is done
 var guessNum = 6; //number of initial guesses
 var win = false; //whether the player has won or not
 
-function gameController(correct, correctCollection, correctRelease, correctRarity, correctWeapon, correctType, correctLow, correctHigh, guessName, guessWeapon, guessCollection, guessRelease, guessRarity, guessType, guessLow, guessHigh)
-    {
-        console.log("correct:", correct);
-        console.log("your guess:", guessName);
+// Function to display the game result
+function displayMessage(message, type = "info") {
+    const outputSection = document.getElementById("outputSection");
 
-        if(complete == false && win == false)
-        {
-            if(correct == guessName && correctWeapon == guessWeapon)
-                {
-                    console.log("correct answer");
-                    complete = true;
-                    win = true;
-                }
+    // Create a new div for the message
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message", type);
+    messageDiv.textContent = message;
 
-            if(correct != guessName && correctWeapon != guessWeapon)
-            {
-                console.log("incorrect answer");
-                guessNum -= 1;
-                console.log("guesses:", guessNum);
+    // Append the new message div to the output section
+    outputSection.appendChild(messageDiv);
 
-                if(correctCollection == guessCollection)
-                {
-                    console.log("hint: collection is the same");
-                }
+    // Optionally scroll to the new message
+    outputSection.scrollTop = outputSection.scrollHeight;
+}
 
-                else
-                {
-                    console.log("hint: collection is not the same");
-                }
+function gameController(correct, correctCollection, correctRelease, correctRarity, correctWeapon, correctType, correctLow, correctHigh, guessName, guessWeapon, guessCollection, guessRelease, guessRarity, guessType, guessLow, guessHigh) {
+    console.log("correct:", correct);
+    console.log("your guess:", guessName);
 
-                if(correctRelease == guessRelease)
-                {
-                    console.log("hint: release date is the same");
-                }
+    if (complete == false && win == false) {
+        if (correct == guessName && correctWeapon == guessWeapon) {
+            displayMessage("Correct! You guessed the skin right.", "success");
+            complete = true;
+            win = true;
+        }
 
-                else
-                {
-                    console.log("hint: release date is not the same");
-                }
+        if (correct != guessName || correctWeapon != guessWeapon) {
+            displayMessage("Incorrect guess. Try again!", "error");
+            guessNum -= 1;
+            displayMessage("Guesses left: " + guessNum, "info");
 
-                if(correctRarity == guessRarity)
-                {
-                    console.log("hint: rarity is the same");
-                }
-
-                else
-                {
-                    console.log("hint: rarity is not the same");
-                }
-
-                if(correctType == guessType)
-                {
-                    console.log("hint: type of weapon is the same");
-                }
-
-                else
-                {
-                    console.log("hint: type of weapon is not the same");
-                }
-
-                if(correctLow == guessLow)
-                {
-                    console.log("hint: the low price is the same");
-                }
-
-                else
-                {
-                    console.log("hint: the low price is not the same");
-                }
-
-                if(correctHigh == guessHigh)
-                {
-                    console.log("hint: the high price is the same");
-                }
-
-                else
-                {
-                    console.log("hint: the high price is not the same");
-                }
+            if (correctCollection == guessCollection) {
+                displayMessage("Hint: The collection is the same.", "hint");
+            } else {
+                displayMessage("Hint: The collection is not the same.", "hint");
             }
 
-            if(guessNum == 0)
-            {
-                console.log("incorrect answer");
-                complete = true;
+            if (correctRelease == guessRelease) {
+                displayMessage("Hint: The release date is the same.", "hint");
+            } else {
+                displayMessage("Hint: The release date is not the same.", "hint");
+            }
+
+            if (correctRarity == guessRarity) {
+                displayMessage("Hint: The rarity is the same.", "hint");
+            } else {
+                displayMessage("Hint: The rarity is not the same.", "hint");
+            }
+
+            if (correctType == guessType) {
+                displayMessage("Hint: The type of weapon is the same.", "hint");
+            } else {
+                displayMessage("Hint: The type of weapon is not the same.", "hint");
+            }
+
+            if (correctLow == guessLow) {
+                displayMessage("Hint: The low price is the same.", "hint");
+            } else {
+                displayMessage("Hint: The low price is not the same.", "hint");
+            }
+
+            if (correctHigh == guessHigh) {
+                displayMessage("Hint: The high price is the same.", "hint");
+            } else {
+                displayMessage("Hint: The high price is not the same.", "hint");
             }
         }
 
-        if(complete == true && win == true)
-        {
-            console.log("you won");
-        }
-
-        if(complete == true && win == false)
-        {
-            console.log("you lost");
+        if (guessNum == 0) {
+            displayMessage("Out of guesses! You lost.", "error");
+            complete = true;
         }
     }
+
+    if (complete == true && win == true) {
+        displayMessage("Congratulations! You've won.", "success");
+    }
+
+    if (complete == true && win == false) {
+        displayMessage("Sorry, you lost. Better luck next time!", "error");
+    }
+}
+
