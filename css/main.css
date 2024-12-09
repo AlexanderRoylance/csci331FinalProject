@@ -9,7 +9,6 @@ body{
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: auto;
 }
 
 h2 {
@@ -81,7 +80,6 @@ h2 {
 .show {
     display:block;
 };
-
 
 .output-section {
     margin-top: 20px;
